@@ -1,7 +1,7 @@
 package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.CurvePoint;
-import com.nnk.springboot.services.CurveService;
+import com.nnk.springboot.services.CurvePointService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +16,7 @@ import javax.validation.Valid;
 @Controller
 public class CurveController {
     @Autowired
-    private CurveService curveService;
+    private CurvePointService curvePointService;
 
     @RequestMapping("/curvePoint/list")
     public String home(Model model)

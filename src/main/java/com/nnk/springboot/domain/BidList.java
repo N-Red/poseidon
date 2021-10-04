@@ -7,8 +7,8 @@ import java.sql.Date;
 @Table(name = "bidlist")
 public class BidList {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer bidListId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
     private String account;
     private String type;
     private double bidQuantity;
@@ -40,12 +40,12 @@ public class BidList {
         this.bidQuantity = v;
     }
 
-    public Integer getBidListId() {
-        return bidListId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setBidListId(Integer bidListId) {
-        this.bidListId = bidListId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getAccount() {
