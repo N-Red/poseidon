@@ -19,10 +19,8 @@ public class RatingController {
     private RatingService ratingService;
 
     @RequestMapping("/rating/list")
-    public String home(Model model)
-    {
-        // TODO: find all Rating, add to model
-        model.addAttribute("ratingList",ratingService.findAll());
+    public String home(Model model) {
+        model.addAttribute("ratingList", ratingService.findAll());
         return "rating/list";
     }
 
@@ -33,9 +31,9 @@ public class RatingController {
 
     @PostMapping("/rating/validate")
     public String validate(@Valid Rating rating, BindingResult result, Model model) {
-        if(!result.hasErrors()){
+        if (!result.hasErrors()) {
             ratingService.save(rating);
-            model.addAttribute("ratingList",ratingService.findAll());
+            model.addAttribute("ratingList", ratingService.findAll());
             return "redirect:/rating/list";
         }
         return "rating/add";
@@ -43,25 +41,25 @@ public class RatingController {
 
     @GetMapping("/rating/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
-        model.addAttribute("rating",ratingService.updateById(id));
+        model.addAttribute("rating", ratingService.updateById(id));
         return "rating/update";
     }
 
     @PostMapping("/rating/update/{id}")
     public String updateRating(@PathVariable("id") Integer id, @Valid Rating rating,
-                             BindingResult result, Model model) {
-        if (result.hasErrors()){
+                               BindingResult result, Model model) {
+        if (result.hasErrors()) {
             return "rating/list";
         }
-        ratingService.updateByRating(rating,id);
-        model.addAttribute("ratingList",ratingService.findAll());
+        ratingService.updateByRating(rating, id);
+        model.addAttribute("ratingList", ratingService.findAll());
         return "redirect:/rating/list";
     }
 
     @GetMapping("/rating/delete/{id}")
     public String deleteRating(@PathVariable("id") Integer id, Model model) {
         ratingService.delete(id);
-        model.addAttribute("ratingList",ratingService.findAll());
+        model.addAttribute("ratingList", ratingService.findAll());
         return "redirect:/rating/list";
     }
 }
