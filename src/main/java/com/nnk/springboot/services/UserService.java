@@ -16,13 +16,6 @@ public class UserService {
         return userRepository.findAll();
     }
 
-
-
-    public User findById(Integer id) {
-        return userRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
-    }
-
     public void save(User user) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         user.setPassword(encoder.encode(user.getPassword()));
@@ -46,4 +39,10 @@ public class UserService {
         User user = this.findById(id);
         userRepository.delete(user);
     }
+
+    private User findById(Integer id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+    }
+
 }

@@ -15,6 +15,7 @@ public class CurvePoint {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    private Integer curvePointId;
     private int curveId;
     private Date asOfDate;
     private double term;
@@ -36,6 +37,14 @@ public class CurvePoint {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getCurvePointId() {
+        return curvePointId;
+    }
+
+    public void setCurvePointId(Integer curvePointId) {
+        this.curvePointId = curvePointId;
     }
 
     public int getCurveId() {

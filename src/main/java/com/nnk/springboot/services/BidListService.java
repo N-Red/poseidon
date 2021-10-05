@@ -14,18 +14,12 @@ public class BidListService {
         return bidListRepository.findAll();
     }
 
-    public BidList findById(Integer id) {
-        return bidListRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid BidList Id:" + id));
-    }
-
     public void save(BidList bid) {
         bidListRepository.save(bid);
     }
 
     public BidList updateById(Integer id) {
-        BidList bid = this.findById(id);
-        return bid;
+        return this.findById(id);
     }
 
     public void updateByBid(BidList bid, Integer id) {
@@ -37,4 +31,10 @@ public class BidListService {
         BidList bidList = this.findById(id);
         bidListRepository.delete(bidList);
     }
+
+    private BidList findById(Integer id) {
+        return bidListRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid BidList Id:" + id));
+    }
+
 }
