@@ -29,13 +29,13 @@ public class RatingService {
         ratingRepository.save(rating);
     }
 
-    private Rating findById(Integer id) {
-        return ratingRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid Rating Id:" + id));
-    }
-
     public void delete(Integer id) {
         Rating rating = this.findById(id);
         ratingRepository.delete(rating);
+    }
+
+    private Rating findById(Integer id) {
+        return ratingRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid Rating Id:" + id));
     }
 }
