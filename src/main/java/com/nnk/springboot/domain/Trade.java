@@ -1,9 +1,7 @@
 package com.nnk.springboot.domain;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.sql.Date;
-import java.sql.Timestamp;
 
 
 @Entity
@@ -11,7 +9,7 @@ import java.sql.Timestamp;
 public class Trade {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer tradeId;
+    private Integer id;
     private String type;
     private String account;
     private double buyQuantity;
@@ -41,12 +39,12 @@ public class Trade {
         this.type = type;
     }
 
-    public Integer getTradeId() {
-        return tradeId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setTradeId(Integer tradeId) {
-        this.tradeId = tradeId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getType() {
