@@ -1,15 +1,19 @@
 package com.nnk.springboot.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.sql.Date;
 
 @Entity
 @Table(name = "bidlist")
 public class BidList {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bidlist_sequence")
+    @SequenceGenerator(name = "bidlist_sequence")
     private Integer id;
+    @NotBlank(message = "Account is mandatory")
     private String account;
+    @NotBlank(message = "Type is mandatory")
     private String type;
     private double bidQuantity;
     private double askQuantity;

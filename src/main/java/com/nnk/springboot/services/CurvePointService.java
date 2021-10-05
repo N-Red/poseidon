@@ -25,7 +25,7 @@ public class CurvePointService {
     }
 
     public void updateByCurvePoint(CurvePoint curvePoint, Integer id) {
-        curvePoint.setCurveId(id);
+        curvePoint.setId(id);
         curvePointRepository.save(curvePoint);
     }
 

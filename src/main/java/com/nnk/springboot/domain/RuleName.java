@@ -6,7 +6,8 @@ import javax.persistence.*;
 @Table(name = "rulename")
 public class RuleName {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "rulename_sequence")
+    @SequenceGenerator(name = "rulename_sequence")
     private Integer id;
     private String name;
     private String description;

@@ -13,10 +13,11 @@ import java.sql.Timestamp;
 @Table(name = "curvepoint")
 public class CurvePoint {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "curvepoint_sequence")
+    @SequenceGenerator(name = "curvepoint_sequence")
     private Integer id;
+    @NotNull(message = "must be not null")
     private Integer curvePointId;
-    private int curveId;
     private Date asOfDate;
     private double term;
     private double value;
@@ -25,10 +26,10 @@ public class CurvePoint {
     public CurvePoint() {
     }
 
-    public CurvePoint(int i, double v, double v1) {
-        this.curveId = i;
-        this.term = v;
-        this.value = v1;
+    public CurvePoint(int curvePointId, double term, double value) {
+        this.curvePointId = curvePointId;
+        this.term = term;
+        this.value = value;
     }
 
     public Integer getId() {
@@ -45,14 +46,6 @@ public class CurvePoint {
 
     public void setCurvePointId(Integer curvePointId) {
         this.curvePointId = curvePointId;
-    }
-
-    public int getCurveId() {
-        return curveId;
-    }
-
-    public void setCurveId(int curveId) {
-        this.curveId = curveId;
     }
 
     public Date getAsOfDate() {

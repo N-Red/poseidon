@@ -9,7 +9,8 @@ import java.sql.Timestamp;
 @Table(name = "rating")
 public class Rating {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "rating_sequence")
+    @SequenceGenerator(name = "rating_sequence")
     private Integer id;
     private String moodysRating;
     private String sandPRating;
